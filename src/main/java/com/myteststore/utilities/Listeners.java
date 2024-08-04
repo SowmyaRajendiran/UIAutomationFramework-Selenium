@@ -16,8 +16,8 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.myteststore.base.DriverFactory;
-import com.myteststore.base.ExtentFactory;
-import com.myteststore.base.ExtentReport;
+import com.myteststore.reports.ExtentFactory;
+import com.myteststore.reports.ExtentReport;
 
 public class Listeners implements ITestListener {
 
