@@ -1,4 +1,4 @@
-package com.myteststore.reports;
+package com.mytestproduct.reports;
 
 import com.aventstack.extentreports.ExtentTest;
 

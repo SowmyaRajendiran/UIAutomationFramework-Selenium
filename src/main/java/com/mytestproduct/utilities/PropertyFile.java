@@ -1,4 +1,4 @@
-package com.myteststore.utilities;
+package com.mytestproduct.utilities;
 
 import java.io.FileInputStream;
 import java.util.Properties;

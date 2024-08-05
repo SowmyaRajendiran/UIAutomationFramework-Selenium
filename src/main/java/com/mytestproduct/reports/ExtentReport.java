@@ -1,4 +1,4 @@
-package com.myteststore.reports;
+package com.mytestproduct.reports;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.Date;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.myteststore.utilities.PropertyFile;
+import com.mytestproduct.utilities.PropertyFile;
 
 public class ExtentReport {
 

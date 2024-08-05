@@ -1,4 +1,4 @@
-package com.myteststore.utilities;
+package com.mytestproduct.utilities;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,9 +15,9 @@ import org.testng.ITestResult;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import com.myteststore.base.DriverFactory;
-import com.myteststore.reports.ExtentFactory;
-import com.myteststore.reports.ExtentReport;
+import com.mytestproduct.base.DriverFactory;
+import com.mytestproduct.reports.ExtentFactory;
+import com.mytestproduct.reports.ExtentReport;
 
 public class Listeners implements ITestListener {
 

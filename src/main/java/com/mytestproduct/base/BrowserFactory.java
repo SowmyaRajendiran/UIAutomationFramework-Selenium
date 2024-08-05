@@ -1,4 +1,4 @@
-package com.myteststore.base;
+package com.mytestproduct.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
