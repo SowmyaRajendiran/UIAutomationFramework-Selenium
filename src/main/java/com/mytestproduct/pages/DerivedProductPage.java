@@ -17,7 +17,7 @@ import com.mytestproduct.actiondriver.ActionClass;
 
 import org.apache.commons.csv.CSVFormat;
 
-public class DerivedProductPage extends ActionClass {
+public class DerivedProductPage extends BaseFactoryPage {
 	WebDriver driver;
 
 	@FindBy(xpath = "//footer[contains(@class,'text-xs text-white dark-primary-background')]//a")
@@ -27,15 +27,14 @@ public class DerivedProductPage extends ActionClass {
 	private WebElement homePageBottomSection;
 
 	public DerivedProductPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		 super(driver);
 	}
 
 	/*
 	 * Description: Method to click Ticket Access Popup Close Icon
 	 */
 	public void getListofFooterHyperlinks() {
-		scrollToSpecificElement("Footer Section", homePageBottomSection);
+		ActionClass.scrollToSpecificElement("Footer Section", homePageBottomSection);
 
 		for (WebElement e : footerHyperlinks) {
 			String ele = e.getAttribute("href");
@@ -49,7 +48,7 @@ public class DerivedProductPage extends ActionClass {
 	 */
 	public void verifyLinks() throws IOException {
 		FileWriter writer = new FileWriter("file.csv");
-		scrollToSpecificElement("Footer Section", homePageBottomSection);
+		ActionClass.scrollToSpecificElement("Footer Section", homePageBottomSection);
 		// Use Sets to store links and detect duplicates
 		Set<String> linkSet = new HashSet<String>();
 		Set<String> duplicateLinks = new HashSet<String>();

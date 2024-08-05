@@ -12,7 +12,7 @@ import com.mytestproduct.pages.CoreProductHomePage;
 @Listeners(com.mytestproduct.utilities.Listeners.class)
 public class TestCase1_CoreProduct extends BaseTest {
 	CoreProductHomePage home;
-	CoreProductFeaturePage feature; 
+	CoreProductFeaturePage feature;
 
 	@BeforeMethod
 	public void launchApplication() {
@@ -23,7 +23,8 @@ public class TestCase1_CoreProduct extends BaseTest {
 	public void test1() throws InterruptedException {
 		home = new CoreProductHomePage(DriverFactory.getInstance().getDriver());
 		feature = new CoreProductFeaturePage(DriverFactory.getInstance().getDriver());
-		home.closeTicketAccessPopUp();
+		home.verifyTicketAccessPopUp();
+		home.navigateToNewsAndFeaturesSubMenu();
 		feature.scrollToVideosSection();
 		feature.getVideoSectioncount();
 		feature.getVideoDayscount();

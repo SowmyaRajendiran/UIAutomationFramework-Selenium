@@ -3,8 +3,8 @@
 <suite parallel="methods" name="Suite">
   <test thread-count="5" parallel="methods" name="Test">
     <classes>
-      <class name="com.myteststore.testcases.sampletest"/>
-      <class name="com.myteststore.testcases.Testcase1"/>
+      <class name="com.mytestproduct.testcases.TestCase1_CoreProduct"/>
+      <class name="com.mytestproduct.testcases.TestCase2_DerivedProduct"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

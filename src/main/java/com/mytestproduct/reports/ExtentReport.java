@@ -13,7 +13,7 @@ public class ExtentReport {
 	static ExtentReports extent;
 
 	/*
-	 * Function Description: Method to setup Extent Report
+	 * Function Description: Method to setup Extent Report and its Configurations
 	 */
 	public static ExtentReports setupExtentReport() throws Exception {
 		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyy HH-mm-ss");

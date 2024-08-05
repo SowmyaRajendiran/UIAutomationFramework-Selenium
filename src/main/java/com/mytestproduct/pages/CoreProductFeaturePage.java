@@ -6,15 +6,14 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import com.mytestproduct.actiondriver.ActionClass;
 
-public class CoreProductFeaturePage extends ActionClass {
+public class CoreProductFeaturePage extends BaseFactoryPage {
 	WebDriver driver;
 
 	@FindBy(xpath = "//h3[text()='VIDEOS']")
-	private WebElement videoHeader;
+	private WebElement videoSectionHeader;
 
 	@FindBy(xpath = "//h3[text()='VIDEOS']/parent::div/following-sibling::div//ul/li")
 	private List<WebElement> videosList;
@@ -23,19 +22,17 @@ public class CoreProductFeaturePage extends ActionClass {
 	private List<WebElement> videoTimeCount;
 
 	public CoreProductFeaturePage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
 	}
 
 	/*
-	 * Description: Method to click Ticket Access Popup Close Icon
+	 * Description: Method to Scroll To Video Section Header
 	 */
 	public void scrollToVideosSection() {
-		scrollToSpecificElement("videoHeader", videoHeader);
+		ActionClass.scrollToSpecificElement("Video Section Header", videoSectionHeader);
 	}
 
 	public void getVideoSectioncount() {
-
 		int videoList = videosList.size();
 		System.out.println("count of videos present in news and features page is" + videoList);
 

@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class DriverFactory {
 
-	//Singleton design Pattern
+	//Implemented Singleton design Pattern
 	private DriverFactory() {
 		
 	}
