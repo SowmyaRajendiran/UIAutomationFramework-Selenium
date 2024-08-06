@@ -8,9 +8,10 @@ import com.mytestproduct.base.BaseTest;
 import com.mytestproduct.base.DriverFactory;
 import com.mytestproduct.pages.CoreProductFeaturePage;
 import com.mytestproduct.pages.CoreProductHomePage;
+import com.mytestproduct.utilities.ReadJson;
 
 @Listeners(com.mytestproduct.utilities.Listeners.class)
-public class TestCase1_CoreProduct extends BaseTest {
+public class CP_VideoSectionTestCase extends BaseTest {
 	CoreProductHomePage home;
 	CoreProductFeaturePage feature;
 
@@ -20,14 +21,14 @@ public class TestCase1_CoreProduct extends BaseTest {
 	}
 
 	@Test
-	public void test1() throws InterruptedException {
+	public void VerifyVideoSectionInNewsAndFeaturesPage() throws InterruptedException {
 		home = new CoreProductHomePage(DriverFactory.getInstance().getDriver());
 		feature = new CoreProductFeaturePage(DriverFactory.getInstance().getDriver());
 		home.verifyTicketAccessPopUp();
 		home.navigateToNewsAndFeaturesSubMenu();
 		feature.scrollToVideosSection();
 		feature.getVideoSectioncount();
-		feature.getVideoDayscount();
+		feature.getVideoDaysCountGreaterThan3Days(ReadJson.readJSONValue("daysCount"));
 
 	}
 

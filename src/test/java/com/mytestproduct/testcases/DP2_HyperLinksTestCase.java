@@ -11,9 +11,9 @@ import com.mytestproduct.base.DriverFactory;
 import com.mytestproduct.pages.DerivedProductPage;
 
 @Listeners(com.mytestproduct.utilities.Listeners.class)
-public class TestCase2_DerivedProduct extends BaseTest {
-	
-	DerivedProductPage derivedpage; 
+public class DP2_HyperLinksTestCase extends BaseTest {
+
+	DerivedProductPage derivedpage;
 
 	@BeforeMethod
 	public void launchApplication() {
@@ -21,10 +21,11 @@ public class TestCase2_DerivedProduct extends BaseTest {
 	}
 
 	@Test
-	public void test1() throws InterruptedException, IOException {
+	public void VerifyHyperLinksInFooterSection() throws InterruptedException, IOException {
 		derivedpage = new DerivedProductPage(DriverFactory.getInstance().getDriver());
-		derivedpage.verifyLinks();
-		Thread.sleep(2000);
+		derivedpage.navigateToFooterSection();
+		derivedpage.verifyHyperLinksInFooterSectionAndStoreItInCSV();
+		derivedpage.verifyDuplicateHyperLinksInFooterSection();
 
 	}
 

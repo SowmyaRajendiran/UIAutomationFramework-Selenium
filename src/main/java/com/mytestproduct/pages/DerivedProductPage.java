@@ -1,57 +1,52 @@
 package com.mytestproduct.pages;
 
-import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.csv.CSVPrinter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
+import com.aventstack.extentreports.Status;
 import com.mytestproduct.actiondriver.ActionClass;
-
-import org.apache.commons.csv.CSVFormat;
+import com.mytestproduct.reports.ExtentFactory;
 
 public class DerivedProductPage extends BaseFactoryPage {
 	WebDriver driver;
+	Set<String> duplicateLinks = new HashSet<String>();
+
+	@FindBy(xpath = "//footer[contains(@class,'text-xs text-white dark-primary-background')]")
+	private WebElement footerSection;
 
 	@FindBy(xpath = "//footer[contains(@class,'text-xs text-white dark-primary-background')]//a")
 	private List<WebElement> footerHyperlinks;
 
 	@FindBy(xpath = "//div[contains(@id,'homepage_bottom')]")
-	private WebElement homePageBottomSection;
+	private WebElement derivedproductPageBottomSection;
 
 	public DerivedProductPage(WebDriver driver) {
-		 super(driver);
+		super(driver);
 	}
 
 	/*
-	 * Description: Method to click Ticket Access Popup Close Icon
+	 * Description: Method to Navigate To Footer Section
 	 */
-	public void getListofFooterHyperlinks() {
-		ActionClass.scrollToSpecificElement("Footer Section", homePageBottomSection);
-
-		for (WebElement e : footerHyperlinks) {
-			String ele = e.getAttribute("href");
-			System.out.println(ele);
-		}
-
+	public void navigateToFooterSection() {
+		ActionClass.scrollToSpecificElement("Derived Product Page Footer Section", footerSection);
 	}
 
 	/*
-	 * Description: Method to click Ticket Access Popup Close Icon
+	 * Description: Method to Get The List of HyperLinks In Footer Section Ans Store
+	 * It In CSV File
 	 */
-	public void verifyLinks() throws IOException {
-		FileWriter writer = new FileWriter("file.csv");
-		ActionClass.scrollToSpecificElement("Footer Section", homePageBottomSection);
+	public void verifyHyperLinksInFooterSectionAndStoreItInCSV() throws IOException {
+		FileWriter writer = new FileWriter(System.getProperty("user.dir") + "/src/test/resources/csvFile/links.csv");
+
 		// Use Sets to store links and detect duplicates
 		Set<String> linkSet = new HashSet<String>();
-		Set<String> duplicateLinks = new HashSet<String>();
 
 		for (WebElement link : footerHyperlinks) {
 			String href = link.getAttribute("href");
@@ -61,24 +56,33 @@ public class DerivedProductPage extends BaseFactoryPage {
 					duplicateLinks.add(href);
 				} else {
 					linkSet.add(href);
-					writer.append(href+"\n");
+					// Store the Hyper Links in CSV File
+					writer.append(href + "\n");
 				}
 			}
 		}
-		System.out.println(linkSet);
-
-		// Report duplicates
-		if (!duplicateLinks.isEmpty())
-
-		{
-			System.out.println("Duplicate links found:");
-			for (String duplicate : duplicateLinks) {
-				System.out.println(duplicate);
-			}
-		} else {
-			System.out.println("No duplicate links found.");
-		}
+		ExtentFactory.getInstance().getExtent().log(Status.INFO,
+				"List of HyperLinks In the Footer Section" + " " + linkSet);
 
 		writer.close();
 	}
+
+	/*
+	 * Description: Method to Get The List of HyperLinks In Footer Section And Store
+	 * It In CSV File
+	 */
+	public void verifyDuplicateHyperLinksInFooterSection() {
+		if (!duplicateLinks.isEmpty())
+
+		{
+			ExtentFactory.getInstance().getExtent().log(Status.INFO,
+					"List of Duplicate HyperLinks In the Footer Section" + " " + duplicateLinks);
+
+		} else {
+			ExtentFactory.getInstance().getExtent().log(Status.INFO,
+					"Duplicate HyperLinks Are Not Present In the Footer Section" + " " + duplicateLinks);
+		}
+
+	}
+
 }

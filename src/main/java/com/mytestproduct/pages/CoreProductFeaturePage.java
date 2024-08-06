@@ -1,5 +1,7 @@
 package com.mytestproduct.pages;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.aventstack.extentreports.Status;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mytestproduct.actiondriver.ActionClass;
+import com.mytestproduct.reports.ExtentFactory;
 
 public class CoreProductFeaturePage extends BaseFactoryPage {
 	WebDriver driver;
@@ -15,11 +21,14 @@ public class CoreProductFeaturePage extends BaseFactoryPage {
 	@FindBy(xpath = "//h3[text()='VIDEOS']")
 	private WebElement videoSectionHeader;
 
-	@FindBy(xpath = "//h3[text()='VIDEOS']/parent::div/following-sibling::div//ul/li")
+	@FindBy(xpath = "//h3[text()='VIDEOS']/parent::div/following-sibling::div[@class='ContentGrid_contentGrid__MwtcV content-grid  ']//li")
 	private List<WebElement> videosList;
 
-	@FindBy(xpath = "//h3[text()='VIDEOS']/parent::div/following-sibling::div//ul/li//div[@class='TileArticle_tileArticleMetaWrapper__431v8']//time/span")
-	private List<WebElement> videoTimeCount;
+	@FindBy(xpath = "//h3[text()='VIDEOS']/parent::div/following-sibling::div[@class='ContentGrid_contentGrid__MwtcV content-grid  ']//li//h3")
+	private List<WebElement> videosTitle;
+
+	@FindBy(xpath = "//h3[text()='VIDEOS']/parent::div/following-sibling::div[@class='ContentGrid_contentGrid__MwtcV content-grid  ']//li//time//span")
+	private List<WebElement> videoDayCount;
 
 	public CoreProductFeaturePage(WebDriver driver) {
 		super(driver);
@@ -32,35 +41,57 @@ public class CoreProductFeaturePage extends BaseFactoryPage {
 		ActionClass.scrollToSpecificElement("Video Section Header", videoSectionHeader);
 	}
 
+	/*
+	 * Description: Get the Total Number of Videos present in video section
+	 */
 	public void getVideoSectioncount() {
 		int videoList = videosList.size();
-		System.out.println("count of videos present in news and features page is" + videoList);
+		ExtentFactory.getInstance().getExtent().log(Status.INFO,
+				"Total Number of Videos Present In the Video Section" + " " + videoList);
+
+		ArrayList<String> videoTitles = new ArrayList<String>();
+		for (int i = 0; i < videosTitle.size(); i++) {
+			videoTitles.add(videosTitle.get(i).getText());
+		}
+
+		ExtentFactory.getInstance().getExtent().log(Status.INFO,
+				"Video Title of all the Videos present in the video section" + "\n" + videoTitles);
 
 	}
 
-	public void getVideoDayscount() {
-		int expValue = 3;
+	/*
+	 * Description: Get the Count of Videos present in video section which is
+	 * greater than 3 days
+	 */
+	public void getVideoDaysCountGreaterThan3Days(String daysCountExpectedValue) {
 		int count = 0;
-		List<Integer> arr = new ArrayList<Integer>();
+		List<Integer> daysArray = new ArrayList<Integer>();
 
-		for (WebElement e : videoTimeCount) {
+		// Iterating through each element
+		for (WebElement e : videoDayCount) {
 			String dayValue = e.getText();
 
+			// Iterating the string and adding only digit values into the array
 			for (int i = 0; i < dayValue.length(); i++) {
 				if (dayValue.charAt(i) == 'd') {
-					arr.add(Integer.parseInt(dayValue.substring(0, i)));
+					daysArray.add(Integer.parseInt(dayValue.substring(0, i)));
 				}
 			}
 
 		}
 
-		for (int i = 0; i < arr.size(); i++) {
-			if (arr.get(i) > expValue) {
+		ExtentFactory.getInstance().getExtent().log(Status.INFO,
+				"Day Values of entire Video List In the Video Section" + " " + daysArray);
+
+		// Iterating through the array and counting the videos which is greater than 3
+		// days
+		for (int i = 0; i < daysArray.size(); i++) {
+			if (daysArray.get(i) > Integer.parseInt(daysCountExpectedValue)) {
 				count++;
 			}
 		}
-		System.out.println("Days array" + arr);
-		System.out.println("Total Videos greater than 3d is" + count);
+		ExtentFactory.getInstance().getExtent().log(Status.INFO,
+				"Total Number of Videos Present In the Video Section which is Greater than 3 Days" + " " + count);
 
 	}
 
