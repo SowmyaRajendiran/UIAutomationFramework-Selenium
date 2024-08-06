@@ -8,6 +8,7 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 import com.aventstack.extentreports.Status;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -44,10 +45,12 @@ public class CoreProductFeaturePage extends BaseFactoryPage {
 	/*
 	 * Description: Get the Total Number of Videos present in video section
 	 */
-	public void getVideoSectioncount() {
+	public void getVideoSectioncount(String expectedVideoCount) {
 		int videoList = videosList.size();
 		ExtentFactory.getInstance().getExtent().log(Status.INFO,
 				"Total Number of Videos Present In the Video Section" + " " + videoList);
+		
+		Assert.assertEquals(Integer.parseInt(expectedVideoCount), videoList);
 
 		ArrayList<String> videoTitles = new ArrayList<String>();
 		for (int i = 0; i < videosTitle.size(); i++) {

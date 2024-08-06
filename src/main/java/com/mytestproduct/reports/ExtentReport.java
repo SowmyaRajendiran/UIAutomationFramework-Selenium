@@ -27,9 +27,9 @@ public class ExtentReport {
 		extent = new ExtentReports();
 		extent.attachReporter(sparkReport);
 
-		sparkReport.config().setDocumentTitle("DocumentTitle");
+		sparkReport.config().setDocumentTitle("Automation Report");
 		sparkReport.config().setTheme(Theme.DARK);
-		sparkReport.config().setReportName("ReportName");
+		sparkReport.config().setReportName("Automation Report");
 
 		extent.setSystemInfo("Executed on Environment: ", PropertyFile.getPropertyValue("url"));
 		extent.setSystemInfo("Executed on Browser: ", PropertyFile.getPropertyValue("browser"));

@@ -11,7 +11,7 @@ import com.mytestproduct.pages.CoreProductHomePage;
 import com.mytestproduct.utilities.ReadJson;
 
 @Listeners(com.mytestproduct.utilities.Listeners.class)
-public class CP_VideoSectionTestCase extends BaseTest {
+public class TestCase_CoreProduct_VideoSection extends BaseTest {
 	CoreProductHomePage home;
 	CoreProductFeaturePage feature;
 
@@ -24,11 +24,12 @@ public class CP_VideoSectionTestCase extends BaseTest {
 	public void VerifyVideoSectionInNewsAndFeaturesPage() throws InterruptedException {
 		home = new CoreProductHomePage(DriverFactory.getInstance().getDriver());
 		feature = new CoreProductFeaturePage(DriverFactory.getInstance().getDriver());
+		home.verifyPageTitle(ReadJson.readJSONValue("cpHomePageTitle"));
 		home.verifyTicketAccessPopUp();
 		home.navigateToNewsAndFeaturesSubMenu();
 		feature.scrollToVideosSection();
-		feature.getVideoSectioncount();
-		feature.getVideoDaysCountGreaterThan3Days(ReadJson.readJSONValue("daysCount"));
+		feature.getVideoSectioncount(ReadJson.readJSONValue("cpExpectedVideosCount"));
+		feature.getVideoDaysCountGreaterThan3Days(ReadJson.readJSONValue("cpVideosDayCount"));
 
 	}
 

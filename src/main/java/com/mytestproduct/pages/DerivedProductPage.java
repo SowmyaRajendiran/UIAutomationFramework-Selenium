@@ -9,6 +9,7 @@ import java.util.Set;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 import com.aventstack.extentreports.Status;
 import com.mytestproduct.actiondriver.ActionClass;
@@ -42,8 +43,10 @@ public class DerivedProductPage extends BaseFactoryPage {
 	 * Description: Method to Get The List of HyperLinks In Footer Section Ans Store
 	 * It In CSV File
 	 */
-	public void verifyHyperLinksInFooterSectionAndStoreItInCSV() throws IOException {
+	public void verifyHyperLinksInFooterSectionAndStoreItInCSV(String expectedHyperLinksCount) throws IOException {
 		FileWriter writer = new FileWriter(System.getProperty("user.dir") + "/src/test/resources/csvFile/links.csv");
+		
+		Assert.assertEquals(Integer.parseInt(expectedHyperLinksCount), footerHyperlinks.size());
 
 		// Use Sets to store links and detect duplicates
 		Set<String> linkSet = new HashSet<String>();
@@ -83,6 +86,13 @@ public class DerivedProductPage extends BaseFactoryPage {
 					"Duplicate HyperLinks Are Not Present In the Footer Section" + " " + duplicateLinks);
 		}
 
+	}
+	
+	/*
+	 * Description: Method to Verify The Page Title
+	 */
+	public void verifyPageTitle(String expectedTitle) {
+		ActionClass.verifyPageTitle(expectedTitle);
 	}
 
 }
