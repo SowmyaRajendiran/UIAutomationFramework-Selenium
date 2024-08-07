@@ -27,11 +27,11 @@ public class ActionClass {
 			new WebDriverWait(DriverFactory.getInstance().getDriver(), Duration.ofSeconds(2))
 					.until(ExpectedConditions.elementToBeClickable(element));
 			element.click();
-			ExtentFactory.getInstance().getExtent().log(Status.INFO,
+			ExtentFactory.getInstance().getExtent().log(Status.PASS,
 					"The Field" + " " + "'" + fieldName + "'" + " " + "Has Been Clicked Successfully");
 
 		} catch (Exception e) {
-			ExtentFactory.getInstance().getExtent().log(Status.INFO, "The Field" + " " + "'" + fieldName + "'" + " "
+			ExtentFactory.getInstance().getExtent().log(Status.FAIL, "The Field" + " " + "'" + fieldName + "'" + " "
 					+ "Has Not Been Clicked Successfully" + e.getMessage());
 		}
 	}
@@ -49,11 +49,11 @@ public class ActionClass {
 			new WebDriverWait(DriverFactory.getInstance().getDriver(), Duration.ofSeconds(2))
 					.until(ExpectedConditions.titleContains(expectedTitle));
 
-			ExtentFactory.getInstance().getExtent().log(Status.INFO,
+			ExtentFactory.getInstance().getExtent().log(Status.PASS,
 					"Expected Title" + " " + "'" + expectedTitle + "'" + " " + "Is Present");
 
 		} catch (Exception e) {
-			ExtentFactory.getInstance().getExtent().log(Status.INFO,
+			ExtentFactory.getInstance().getExtent().log(Status.FAIL,
 					"Expected Title" + " " + "'" + expectedTitle + "'" + " " + "Is Not Present" + e.getMessage());
 		}
 	}
@@ -73,11 +73,11 @@ public class ActionClass {
 			JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getInstance().getDriver();
 			js.executeScript("arguments[0].scrollIntoView(true);", element);
 
-			ExtentFactory.getInstance().getExtent().log(Status.INFO,
+			ExtentFactory.getInstance().getExtent().log(Status.PASS,
 					"The User Has Been Scrolled to the" + " " + "'" + fieldName + "'" + " " + "Successfully");
 
 		} catch (Exception e) {
-			ExtentFactory.getInstance().getExtent().log(Status.INFO, "The User Has Not Been Scrolled to the" + " " + "'"
+			ExtentFactory.getInstance().getExtent().log(Status.FAIL, "The User Has Not Been Scrolled to the" + " " + "'"
 					+ fieldName + "'" + " " + "Successfully" + e.getMessage());
 		}
 	}
@@ -97,11 +97,11 @@ public class ActionClass {
 			action.sendKeys(Keys.TAB).sendKeys(value).perform();
 			// element.sendKeys(value);
 
-			ExtentFactory.getInstance().getExtent().log(Status.INFO, "The User Entered the Text" + " " + "'" + value
+			ExtentFactory.getInstance().getExtent().log(Status.PASS, "The User Entered the Text" + " " + "'" + value
 					+ "'" + " " + "in the" + " " + "'" + fieldName + "'" + " " + "Successfully");
 
 		} catch (Exception e) {
-			ExtentFactory.getInstance().getExtent().log(Status.INFO,
+			ExtentFactory.getInstance().getExtent().log(Status.FAIL,
 					"The User Haven't Entered the Text" + " " + "'" + value + "'" + " " + "in the" + " " + "'"
 							+ fieldName + "'" + " " + "Successfully" + e.getMessage());
 		}
@@ -122,11 +122,11 @@ public class ActionClass {
 			Actions action = new Actions(DriverFactory.getInstance().getDriver());
 			action.moveToElement(element).perform();
 
-			ExtentFactory.getInstance().getExtent().log(Status.INFO,
+			ExtentFactory.getInstance().getExtent().log(Status.PASS,
 					"The User Has Been Hovered to the" + " " + "'" + fieldName + "'" + " " + "Successfully");
 
 		} catch (Exception e) {
-			ExtentFactory.getInstance().getExtent().log(Status.INFO, "The User Hasn't Been Hovered to the" + " " + "'"
+			ExtentFactory.getInstance().getExtent().log(Status.FAIL, "The User Hasn't Been Hovered to the" + " " + "'"
 					+ fieldName + "'" + " " + "Successfully" + e.getMessage());
 		}
 	}
@@ -147,11 +147,11 @@ public class ActionClass {
 			JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getInstance().getDriver();
 			js.executeScript("arguments[0].click();", element);
 
-			ExtentFactory.getInstance().getExtent().log(Status.INFO,
+			ExtentFactory.getInstance().getExtent().log(Status.PASS,
 					"The Field" + " " + "'" + fieldName + "'" + " " + "Has Been Clicked Successfully");
 
 		} catch (Exception e) {
-			ExtentFactory.getInstance().getExtent().log(Status.INFO, "The Field" + " " + "'" + fieldName + "'" + " "
+			ExtentFactory.getInstance().getExtent().log(Status.FAIL, "The Field" + " " + "'" + fieldName + "'" + " "
 					+ "Has Not Been Clicked Successfully" + e.getMessage() + e.getMessage());
 		}
 	}

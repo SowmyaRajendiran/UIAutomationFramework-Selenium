@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import com.mytestproduct.actiondriver.ActionClass;
-import com.mytestproduct.base.DriverFactory;
 
 public class CoreProductHomePage extends BaseFactoryPage {
 	WebDriver driver;

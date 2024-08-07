@@ -1,7 +1,5 @@
 package com.mytestproduct.pages;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +9,6 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 import com.aventstack.extentreports.Status;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mytestproduct.actiondriver.ActionClass;
 import com.mytestproduct.reports.ExtentFactory;
 
@@ -49,7 +45,7 @@ public class CoreProductFeaturePage extends BaseFactoryPage {
 		int videoList = videosList.size();
 		ExtentFactory.getInstance().getExtent().log(Status.INFO,
 				"Total Number of Videos Present In the Video Section" + " " + videoList);
-		
+
 		Assert.assertEquals(Integer.parseInt(expectedVideoCount), videoList);
 
 		ArrayList<String> videoTitles = new ArrayList<String>();
