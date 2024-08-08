@@ -40,15 +40,15 @@ public class CoreProductHomePage extends BaseFactoryPage {
 	public void verifyTicketAccessPopUp() {
 		ActionClass.click("Close Icon - Ticket Access Popup", ticketAccessPopUpCloseIcon);
 	}
+	
 
 	/*
 	 * Description: Method to Navigate to News and Features Page from Home Page
 	 */
-	public CoreProductFeaturePage navigateToNewsAndFeaturesSubMenu() {
+	public void navigateToNewsAndFeaturesSubMenu() {
 		ActionClass.mouseHoveronElement("Secondary Menu - '...'", secondaryMenu);
 		ActionClass.mouseHoveronElement("NewsAndFeatures Sub Menu", newsAndFeaturesPage);
 		ActionClass.click("NewsAndFeatures Sub Menu", newsAndFeaturesPage);
-		return new CoreProductFeaturePage(driver);
 	}
 
 }

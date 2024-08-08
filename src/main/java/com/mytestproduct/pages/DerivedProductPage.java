@@ -92,7 +92,6 @@ public class DerivedProductPage extends BaseFactoryPage {
 	 * Description: Method to Verify The Page Title
 	 */
 	public void verifyPageTitle(String expectedTitle) {
-		verifyPageTitle(expectedTitle);
+		ActionClass.verifyPageTitle(expectedTitle);
 	}
-
 }
