@@ -46,11 +46,9 @@ testng-parallel.xml – For parallel execution.
 1. **Clone the Repository**:
    - git clone https://github.com/your-username/your-repo-name.git
    - cd your-repo-name
-     
 			or
-
     **Download the project**
-  - Download the project as a ZIP file from GitHub, extract it, and then import it into Eclipse
+   - Download the project as a ZIP file from GitHub, extract it, and then import it into Eclipse
 
 2. **Install Dependencies**: 
 Ensure Maven is installed and then run:
