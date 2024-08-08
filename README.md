@@ -13,8 +13,8 @@ This repository contains a hybrid test automation framework built using Selenium
 - **Page Factory Design Pattern**: For creating reusable page classes.
 - **Data-Driven Testing**: Utilizing JSON files to drive test data.
 - **Parallel Test Execution**: Running tests concurrently to reduce execution time.
--**Singleton Design Pattern**: Single Instance is created for driver and report and used throughout the test execution.
--**Extent Reports**: For enhanced reporting purpose.
+- **Singleton Design Pattern**: Single Instance is created for driver and report and used throughout the test execution.
+- **Extent Reports**: For enhanced reporting purpose.
 
 ## Prerequisites
 - Java Development Kit (JDK) 8 or higher
@@ -22,18 +22,23 @@ This repository contains a hybrid test automation framework built using Selenium
 - An IDE such as Eclipse
 
 ## Directory Structure
+
 src/main/java: Contains the main source code for the framework.
   - actiondriver/: class for common selenium methods
   - base/: Factory classes for browser, driver initialization.
   - pages/: Page Object Model classes.
   - Reports/: Classes for report methods and extent factory.
   - utilities/: Utility classes for common read operations.
+    
 src/test/java: Contains test cases and test-specific classes.
   - tests/: Test classes and test suites.
+    
 src/test/resources: Contains configuration files and test data.
   - testdata.json: JSON file with test data.
   - Config.properties: Environment configuration.
+    
 testng.xml – For sequential execution.
+
 testng-parallel.xml – For parallel execution.
 
 ## Setup and Installation
