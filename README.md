@@ -22,28 +22,28 @@ This repository contains a hybrid test automation framework built using Selenium
 - An IDE such as Eclipse
 
 ## Directory Structure
-- src/main/java: Contains the main source code for the framework.
-  actiondriver/: class for common selenium methods
-  base/: Factory classes for browser, driver initialization.
-  pages/: Page Object Model classes.
-  Reports/: Classes for report methods and extent factory.
-  utilities/: Utility classes for common read operations.
-- src/test/java: Contains test cases and test-specific classes.
-  tests/: Test classes and test suites.
-- src/test/resources: Contains configuration files and test data.
-	testdata.json: JSON file with test data.
-	Config.properties: Environment configuration.
-- testng.xml – For sequential execution.
-- testng-parallel.xml – For parallel execution.
+src/main/java: Contains the main source code for the framework.
+  - actiondriver/: class for common selenium methods
+  - base/: Factory classes for browser, driver initialization.
+  - pages/: Page Object Model classes.
+  - Reports/: Classes for report methods and extent factory.
+  - utilities/: Utility classes for common read operations.
+src/test/java: Contains test cases and test-specific classes.
+  - tests/: Test classes and test suites.
+src/test/resources: Contains configuration files and test data.
+  - testdata.json: JSON file with test data.
+  - Config.properties: Environment configuration.
+testng.xml – For sequential execution.
+testng-parallel.xml – For parallel execution.
 
 ## Setup and Installation
 
 1. **Clone the Repository**:
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+   - git clone https://github.com/your-username/your-repo-name.git
+   - cd your-repo-name
 			or
     **Download the project**
-  Download the project as a ZIP file from GitHub, extract it, and then import it into Eclipse
+  - Download the project as a ZIP file from GitHub, extract it, and then import it into Eclipse
 
 2. **Install Dependencies**: 
 Ensure Maven is installed and then run:
