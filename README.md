@@ -52,6 +52,8 @@ mvn install
 3. **Update Project**: 
 Before running any test cases, ensure you perform a mvn clean and update the Maven project.
 
+## Test Execution
+
 **Running Tests via testNG:**
 
 Run Tests Sequentially:
