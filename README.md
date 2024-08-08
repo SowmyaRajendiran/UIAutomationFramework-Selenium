@@ -2,6 +2,9 @@
 ## Overview
 This repository contains a hybrid test automation framework built using Selenium, TestNG, Maven, and Java. The framework is designed to facilitate automated testing of web applications, offering a robust and scalable solution for test automation.
 
+## Framework Architecture
+![image](https://github.com/user-attachments/assets/071ef836-a6d2-4117-a8b6-e892ff2a1fbf)
+
 ## Features
 - **Selenium**: For browser automation and interaction with web elements.
 - **TestNG**: For managing test cases, running tests in parallel, and reporting.
