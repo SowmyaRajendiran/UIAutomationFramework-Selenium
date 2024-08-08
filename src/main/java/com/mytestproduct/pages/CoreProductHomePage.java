@@ -44,11 +44,11 @@ public class CoreProductHomePage extends BaseFactoryPage {
 	/*
 	 * Description: Method to Navigate to News and Features Page from Home Page
 	 */
-	public void navigateToNewsAndFeaturesSubMenu() {
+	public CoreProductFeaturePage navigateToNewsAndFeaturesSubMenu() {
 		ActionClass.mouseHoveronElement("Secondary Menu - '...'", secondaryMenu);
 		ActionClass.mouseHoveronElement("NewsAndFeatures Sub Menu", newsAndFeaturesPage);
 		ActionClass.click("NewsAndFeatures Sub Menu", newsAndFeaturesPage);
-
+		return new CoreProductFeaturePage(driver);
 	}
 
 }

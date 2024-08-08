@@ -33,8 +33,7 @@ public class TestCase_CoreProduct_VideoSection extends BaseTest {
 				"START : <---------------- CoreProduct_News And Features Page_Verify Video Section ---------------->");
 		home.verifyPageTitle(ReadJson.readJSONValue("cpHomePageTitle"));
 		home.verifyTicketAccessPopUp();
-		home.navigateToNewsAndFeaturesSubMenu();
-		feature.scrollToVideosSection();
+		home.navigateToNewsAndFeaturesSubMenu().scrollToVideosSection();
 		feature.getVideoSectioncount(ReadJson.readJSONValue("cpExpectedVideosCount"));
 		feature.getVideoDaysCountGreaterThan3Days(ReadJson.readJSONValue("cpVideosDayCount"));
 		ExtentFactory.getInstance().getExtent().log(Status.INFO,
