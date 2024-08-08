@@ -69,5 +69,5 @@ Perform a mvn clean, update the Maven project, and run mvn install. Then, right-
 
 Run Tests in Maven command prompt:
 Ensure Apache Maven is installed and environment variables are set. Navigate to the project folder and run the following commands:
-mvn clean 
-mvn test -Dparallel=tests -DthreadCount=4
+- mvn clean 
+- mvn test -Dparallel=tests -DthreadCount=4
