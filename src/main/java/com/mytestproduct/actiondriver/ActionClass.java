@@ -175,7 +175,7 @@ public class ActionClass {
 			}
 		} catch (Exception e) {
 			ExtentFactory.getInstance().getExtent().log(Status.INFO,
-					"Privacy Pop up Not Found, Continuing with the tests" + e.getMessage());
+					"Privacy Pop up Not Found, Continuing with the tests");
 
 		}
 	}

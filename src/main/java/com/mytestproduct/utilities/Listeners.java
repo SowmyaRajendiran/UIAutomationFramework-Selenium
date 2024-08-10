@@ -46,7 +46,7 @@ public class Listeners implements ITestListener {
 		Date date = new Date();
 		String actualDate = format.format(date);
 
-		String screenshotPath = System.getProperty("user.dir") + "/Reports/Screenshots/" + actualDate + ".jpeg";
+		String screenshotPath = System.getProperty("user.dir") + "/Reports/Screenshots/" + actualDate + ".png";
 		File dest = new File(screenshotPath);
 
 		try {
