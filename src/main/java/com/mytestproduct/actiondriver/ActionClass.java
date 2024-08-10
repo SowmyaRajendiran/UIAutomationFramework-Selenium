@@ -1,6 +1,7 @@
 package com.mytestproduct.actiondriver;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -156,4 +157,47 @@ public class ActionClass {
 		}
 	}
 
+	/*
+	 * Function Description: This function is used to Handle the Privacy popup that
+	 * appears in the web page
+	 * 
+	 * @parameter fieldname, element
+	 */
+	public static void handlePrivacyPopup(WebElement privacyPopup, WebElement acceptButton) {
+		try {
+			new WebDriverWait(DriverFactory.getInstance().getDriver(), Duration.ofSeconds(2))
+					.until(ExpectedConditions.visibilityOf(privacyPopup));
+
+			if (privacyPopup.isDisplayed()) {
+				acceptButton.click();
+				ExtentFactory.getInstance().getExtent().log(Status.PASS,
+						"Accept Button In the Privacy popup Has Been Clicked Successfully");
+			}
+		} catch (Exception e) {
+			ExtentFactory.getInstance().getExtent().log(Status.INFO,
+					"Privacy Pop up Not Found, Continuing with the tests" + e.getMessage());
+
+		}
+	}
+
+	/*
+	 * Function Description: This function is used to Handle the wait for list of
+	 * elements to be visible
+	 * 
+	 * @parameter element
+	 */
+	public static void waitForListOfElements(List<WebElement> elementsList) {
+		try {
+			new WebDriverWait(DriverFactory.getInstance().getDriver(), Duration.ofSeconds(3))
+					.until(ExpectedConditions.visibilityOfAllElements(elementsList));
+
+			ExtentFactory.getInstance().getExtent().log(Status.PASS,
+					"The wait time has been implemented successfully until list of webelements is visible");
+
+		} catch (Exception e) {
+			ExtentFactory.getInstance().getExtent().log(Status.INFO,
+					"The wait time has not been implemented until list of webelements is visible");
+
+		}
+	}
 }

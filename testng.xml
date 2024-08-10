@@ -6,6 +6,7 @@
 	</listeners>
 	<test name="Core Product">
 		<parameter name="appURL" value="cpurl" />
+		<parameter name="browser" value="chrome" />
 		<classes>
 			<class
 				name="com.mytestproduct.testcases.TestCase_CoreProduct_VideoSection" />
@@ -13,6 +14,7 @@
 	</test>
 	<test name="Derived Product2">
 		<parameter name="appURL" value="dp2url" />
+		<parameter name="browser" value="chrome" />
 		<classes>
 			<class
 				name="com.mytestproduct.testcases.TestCase_DerivedProduct2_HyperLinksSection" />

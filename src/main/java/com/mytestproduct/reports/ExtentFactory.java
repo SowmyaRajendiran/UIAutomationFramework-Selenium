@@ -4,7 +4,7 @@ import com.aventstack.extentreports.ExtentTest;
 
 public class ExtentFactory {
 
-	//Implemented Singleton design Pattern
+	// Implemented Singleton design Pattern
 
 	private ExtentFactory() {
 

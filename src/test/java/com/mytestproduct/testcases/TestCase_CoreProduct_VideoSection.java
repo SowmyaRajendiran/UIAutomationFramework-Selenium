@@ -20,9 +20,9 @@ public class TestCase_CoreProduct_VideoSection extends BaseTest {
 	CoreProductFeaturePage feature;
 
 	@BeforeMethod
-	@Parameters("appURL")
-	public void loadApplication(String appURL) {
-		launchApplication(appURL);
+	@Parameters({ "appURL", "browser" })
+	public void loadApplication(String appURL, String browser) {
+		launchApplication(appURL,browser);
 	}
 
 	@Test
@@ -32,6 +32,7 @@ public class TestCase_CoreProduct_VideoSection extends BaseTest {
 		ExtentFactory.getInstance().getExtent().log(Status.INFO,
 				"START : <---------------- CoreProduct_News And Features Page_Verify Video Section ---------------->");
 		home.verifyPageTitle(ReadJson.readJSONValue("cpHomePageTitle"));
+		home.verifyPrivacyPopUp();
 		home.verifyTicketAccessPopUp();
 		home.navigateToNewsAndFeaturesSubMenu();
 		feature.scrollToVideosSection();
@@ -41,7 +42,7 @@ public class TestCase_CoreProduct_VideoSection extends BaseTest {
 				"END : <---------------- CoreProduct_News And Features Page_Verify Video Section ---------------->");
 
 	}
-	
+
 	@AfterMethod
 	public void tearDown() {
 		DriverFactory.getInstance().unload();

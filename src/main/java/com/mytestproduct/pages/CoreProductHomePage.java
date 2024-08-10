@@ -26,7 +26,7 @@ public class CoreProductHomePage extends BaseFactoryPage {
 	public CoreProductHomePage(WebDriver driver) {
 		super(driver);
 	}
-	
+
 	/*
 	 * Description: Method to Verify The Page Title
 	 */
@@ -40,7 +40,13 @@ public class CoreProductHomePage extends BaseFactoryPage {
 	public void verifyTicketAccessPopUp() {
 		ActionClass.click("Close Icon - Ticket Access Popup", ticketAccessPopUpCloseIcon);
 	}
-	
+
+	/*
+	 * Description: Method to click Ticket Access Popup Close Icon
+	 */
+	public void verifyPrivacyPopUp() {
+		ActionClass.handlePrivacyPopup(privacyPopup, privacyPopupAcceptBtn);
+	}
 
 	/*
 	 * Description: Method to Navigate to News and Features Page from Home Page

@@ -14,6 +14,7 @@ import org.testng.Assert;
 import com.aventstack.extentreports.Status;
 import com.mytestproduct.actiondriver.ActionClass;
 import com.mytestproduct.reports.ExtentFactory;
+import com.mytestproduct.utilities.ReadJson;
 
 public class DerivedProductPage extends BaseFactoryPage {
 	WebDriver driver;
@@ -44,9 +45,10 @@ public class DerivedProductPage extends BaseFactoryPage {
 	 * It In CSV File
 	 */
 	public void verifyHyperLinksInFooterSectionAndStoreItInCSV(String expectedHyperLinksCount) throws IOException {
-		FileWriter writer = new FileWriter(System.getProperty("user.dir") + "/src/test/resources/csvFile/links.csv");
-		
-		Assert.assertEquals(Integer.parseInt(expectedHyperLinksCount), footerHyperlinks.size());
+		FileWriter writer = new FileWriter(System.getProperty("user.dir") + "/src/test/resources/"+ ReadJson.readJSONValue("csvFilePath"));
+
+		ActionClass.waitForListOfElements(footerHyperlinks);
+		Assert.assertEquals(footerHyperlinks.size(), Integer.parseInt(expectedHyperLinksCount));
 
 		// Use Sets to store links and detect duplicates
 		Set<String> linkSet = new HashSet<String>();
@@ -87,11 +89,5 @@ public class DerivedProductPage extends BaseFactoryPage {
 		}
 
 	}
-	
-	/*
-	 * Description: Method to Verify The Page Title
-	 */
-	public void verifyPageTitle(String expectedTitle) {
-		ActionClass.verifyPageTitle(expectedTitle);
-	}
+
 }

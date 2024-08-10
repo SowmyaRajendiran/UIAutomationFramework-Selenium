@@ -42,11 +42,14 @@ public class CoreProductFeaturePage extends BaseFactoryPage {
 	 * Description: Get the Total Number of Videos present in video section
 	 */
 	public void getVideoSectioncount(String expectedVideoCount) {
+
+		ActionClass.waitForListOfElements(videosList);
 		int videoList = videosList.size();
+
 		ExtentFactory.getInstance().getExtent().log(Status.INFO,
 				"Total Number of Videos Present In the Video Section" + " " + videoList);
 
-		Assert.assertEquals(Integer.parseInt(expectedVideoCount), videoList);
+		Assert.assertEquals(videoList, Integer.parseInt(expectedVideoCount));
 
 		ArrayList<String> videoTitles = new ArrayList<String>();
 		for (int i = 0; i < videosTitle.size(); i++) {

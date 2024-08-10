@@ -10,28 +10,31 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.mytestproduct.base.BaseTest;
 import com.mytestproduct.base.DriverFactory;
+import com.mytestproduct.pages.CoreProductHomePage;
 import com.mytestproduct.pages.DerivedProductPage;
 import com.mytestproduct.reports.ExtentFactory;
 import com.mytestproduct.utilities.ReadJson;
 
 @Listeners(com.mytestproduct.utilities.Listeners.class)
 public class TestCase_DerivedProduct2_HyperLinksSection extends BaseTest {
-
+	CoreProductHomePage home;
 	DerivedProductPage derivedpage;
 
 	@BeforeMethod
-	@Parameters("appURL")
-	public void loadApplication(String appURL) {
-		launchApplication(appURL);
+	@Parameters({ "appURL", "browser" })
+	public void loadApplication(String appURL, String browser) {
+		launchApplication(appURL,browser);
 	}
 
 
 	@Test
 	public void VerifyHyperLinksInFooterSection() throws InterruptedException, IOException {
+		home = new CoreProductHomePage(DriverFactory.getInstance().getDriver());
 		derivedpage = new DerivedProductPage(DriverFactory.getInstance().getDriver());
 		ExtentFactory.getInstance().getExtent().log(Status.INFO,
 				"START : <---------------- DerivedProduct2_HyperLinkVerification ---------------->");
-		derivedpage.verifyPageTitle(ReadJson.readJSONValue("dp2HomePageTitle"));
+		home.verifyPageTitle(ReadJson.readJSONValue("dp2HomePageTitle"));
+		home.verifyPrivacyPopUp();
 		derivedpage.navigateToFooterSection();
 		derivedpage.verifyHyperLinksInFooterSectionAndStoreItInCSV(ReadJson.readJSONValue("dp2HyperLinksCount"));
 		derivedpage.verifyDuplicateHyperLinksInFooterSection();
